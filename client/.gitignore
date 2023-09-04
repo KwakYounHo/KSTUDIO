@@ -36,3 +36,4 @@ next-env.d.ts
 
 #firebase files
 .firebase/hosting.*.cache
+.firebase/*
