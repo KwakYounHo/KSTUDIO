@@ -1,8 +1,8 @@
 import { FC } from "react"
-import { NextFont } from "next/dist/compiled/@next/font";
 import { Inconsolata } from "next/font/google";
 import Link from "next/link";
 import { title } from "@/models/header/navigation";
+import type { NextFont } from "next/dist/compiled/@next/font";
 
 const inconsolata: NextFont = Inconsolata({
   subsets: ['latin'],
