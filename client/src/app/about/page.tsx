@@ -40,7 +40,7 @@ const About: FC = () => {
           {about.description.map((element) => {
             return (
               <div key={element.id} className={"flex items-center"}>
-                <span className={"material-symbols-outlined mr-1"}>
+                <span className={"material-symbols-outlined mr-1 select-none"}>
                   {element.icon}
                 </span>
                 {element.href ? (
