@@ -14,13 +14,13 @@ const Header: FC = () => {
   return (
     <header id="container" className={`${inconsolata.className} select-none`}>
       <Link href='/' className='flex justify-center'>
-        <button className='hover:text-cyan-400'>
-          <h1 className='uppercase tracking-widest mt-8 mb-3'>kwakyounho</h1>
+        <button className='hover:text-blue-400'>
+          <h1 className='uppercase tracking-widest mt-12 mb-3'>kwakyounho</h1>
         </button>
       </Link>
-      <nav className='text-sm font-light text-gray-900 flex gap-4 justify-center capitalize tracking-tight m-5'>
+      <nav className='text-sm font-light text-gray-700 flex gap-4 justify-center capitalize tracking-tight m-4'>
         {title.map(element=>{
-          return <Link href={element.url} className='hover:text-cyan-400' key={element.id}>{element.title}</Link>
+          return <Link href={element.url} className='hover:text-blue-400' key={element.id}>{element.title}</Link>
         })}
       </nav>
     </header>
