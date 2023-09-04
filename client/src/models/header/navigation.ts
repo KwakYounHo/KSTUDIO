@@ -1,17 +1,22 @@
 type Props = {
-  id: number
+  id: string
   url: string
   title: string
 }
 export const title: Props[] = [
   {
-    id: 1,
+    id: 'about',
     url: '/about',
     title: 'about'
   },
   {
-    id: 2,
+    id: 'blog',
     url: '/blog',
     title: 'blog'
+  },
+  {
+    id: 'quote',
+    url: '/quote',
+    title: 'quote'
   }
 ]
