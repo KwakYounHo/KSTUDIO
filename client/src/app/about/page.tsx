@@ -10,15 +10,20 @@ const badScript: NextFont = Bad_Script({
 
 const About: FC = () => {
   return (
-    <main className={'flex flex-col items-center'}>
-      <div className={'w-52 h-52 my-8'}>
-        <img src={about.profile.profileIMG} title="avatar" className={'rouned drop-shadow-lg select-none'} />
-      </div>
-      <div className={'select-none'}>
-        <span className={`${badScript.className} text-3xl`}>{about.profile.name}</span>
-        <span className={'opacity-40'}>({about.profile.subName})</span>
-      </div>
-    </main>
+    <>
+      <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+      </head>
+      <main className={'flex flex-col items-center'}>
+        <div className={'w-52 h-52 my-8'}>
+          <img src={about.profile.profileIMG} title="avatar" className={'rouned drop-shadow-lg select-none'} />
+        </div>
+        <div className={'select-none'}>
+          <span className={`${badScript.className} text-3xl`}>{about.profile.name}</span>
+          <span className={'opacity-40'}>({about.profile.subName})</span>
+        </div>
+      </main>
+    </>
   )
 }
 
