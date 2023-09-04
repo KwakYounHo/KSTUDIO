@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: constants.createTitle('Blog')
 }
 
-export const Blog: FC = () => {
+const Blog: FC = () => {
   return (
     <main className={'my-auto'}>
       <h1 className={'text-4xl'}>공사중</h1>
