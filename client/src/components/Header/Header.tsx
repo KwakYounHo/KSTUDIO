@@ -20,7 +20,7 @@ const Header: FC = () => {
       </Link>
       <nav className='text-sm font-light text-gray-900 flex gap-4 justify-center capitalize tracking-tight m-5'>
         {title.map(element=>{
-          return <Link href={element.url} className='hover:text-cyan-400'>{element.title}</Link>
+          return <Link href={element.url} className='hover:text-cyan-400' key={element.id}>{element.title}</Link>
         })}
       </nav>
     </header>
