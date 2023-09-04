@@ -1,4 +1,10 @@
-import type { FC } from 'react'
+import type { FC } from 'react';
+import { Metadata } from 'next';
+import { constants } from '@/app/common/domain/models/constants'
+
+export const metadata: Metadata = {
+  title: constants.createTitle('Blog')
+}
 
 export const Blog: FC = () => {
   return (
@@ -8,4 +14,4 @@ export const Blog: FC = () => {
   )
 }
 
-export default Blog
+export default Blog;

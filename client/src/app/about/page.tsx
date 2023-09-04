@@ -3,11 +3,17 @@ import { Bad_Script } from "next/font/google";
 import type { NextFont } from "next/dist/compiled/@next/font";
 import { about } from "@/models/about/about";
 import Link from "next/link";
+import { Metadata } from "next";
+import { constants } from '@/app/common/domain/models/constants'
 
 const badScript: NextFont = Bad_Script({
   subsets: ["latin"],
   weight: ["400"],
 });
+
+export const metadata: Metadata = {
+  title: constants.createTitle('About')
+}
 
 const About: FC = () => {
   return (
