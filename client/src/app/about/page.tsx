@@ -12,11 +12,11 @@ const About: FC = () => {
   return (
     <main className={'flex flex-col items-center'}>
       <div className={'w-52 h-52 my-8'}>
-        <img src={about.profile} title="avatar" className={'rouned drop-shadow-lg select-none'} />
+        <img src={about.profile.profileIMG} title="avatar" className={'rouned drop-shadow-lg select-none'} />
       </div>
       <div className={'select-none'}>
-        <span className={`${badScript.className} text-3xl`}>{about.name}</span>
-        <span className={'opacity-40'}>({about.subName})</span>
+        <span className={`${badScript.className} text-3xl`}>{about.profile.name}</span>
+        <span className={'opacity-40'}>({about.profile.subName})</span>
       </div>
     </main>
   )
