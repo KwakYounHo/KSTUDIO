@@ -15,7 +15,7 @@ const Header: FC = () => {
     <header id="container" className={`${inconsolata.className} select-none`}>
       <Link href='/' className='flex justify-center'>
         <button className='hover:text-blue-400'>
-          <h1 className='uppercase tracking-widest mt-12 mb-3'>kwakyounho</h1>
+          <h1 className='uppercase tracking-[3px] mt-12 mb-3'>younho kwak</h1>
         </button>
       </Link>
       <nav className='text-sm font-light text-gray-700 flex gap-4 justify-center capitalize tracking-tight m-4'>
