@@ -21,7 +21,6 @@ const Quote: FC = async () => {
           const id = element.id;
           const createdArray = element.created_time.split('T');
           const created = [createdArray[0], createdArray[1].split('.')[0].substr(0,5)];
-          console.log([createdArray[0], createdArray[1].split('.')[0].substr(0,5)]);
           const cover = element.cover.external.url;
           const tag = element.properties['태그'].multi_select[0].name;
           const date = element.properties['날짜'].date.start.substr(0,10);
