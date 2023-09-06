@@ -10,7 +10,7 @@ const metadata:Metadata = {
 }
 
 const Quote: FC = async () => {
-  const request = await fetch('https://api.notion.com/v1/databases/1fb19a3cab714c2980742721fd943358/query', options)
+  const request = await fetch(`https://api.notion.com/v1/databases/${process.env.NOTION_DATABASE_ADDRESS}/query`, options)
   const jsonData = await request.json()
   const resp = jsonData;
 
