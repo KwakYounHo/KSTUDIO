@@ -15,7 +15,7 @@ const Quote: FC = async () => {
   const resp = jsonData;
 
   return (
-    <div id="main">
+    <main>
       <div className={'grid grid-cols-1 md:grid-cols-2 gap-7 mt-7'}>
         {resp.results.map((element:any) => {
           const id = element.id;
@@ -30,7 +30,7 @@ const Quote: FC = async () => {
           return <DatabaseResult key={id} created={created} ImageSrc={cover} tag={tag} date={date} description={description} title={title} />
         })}
       </div>
-    </div>
+    </main>
   )
 }
 
