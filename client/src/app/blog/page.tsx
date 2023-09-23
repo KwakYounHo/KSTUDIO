@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import { Metadata } from 'next';
 import { constants } from '@/app/common/domain/models/constants'
+import MarkdownRenderer from '@/utils/components/MarkdownRenderer';
 
 export const metadata: Metadata = {
   title: constants.createTitle('Blog')
@@ -9,7 +10,10 @@ export const metadata: Metadata = {
 const Blog: FC = () => {
   return (
     <main className={'my-auto'}>
-      <h1 className={'text-4xl'}>공사중</h1>
+      <MarkdownRenderer
+        content={"# 임시 오픈\n## 계속 변경 예정"}
+        className={"mt-auto text-center"}
+      />
     </main>
   )
 }
