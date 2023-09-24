@@ -5,11 +5,18 @@ import Prism from "prismjs";
 import { mangle } from "marked-mangle";
 import { gfmHeadingId } from "marked-gfm-heading-id";
 
-import parser from "node-html-parser";
+import "prismjs/components/prism-bash";
+import "prismjs/components/prism-c";
+import "prismjs/components/prism-java";
+import "prismjs/components/prism-jsx";
+import "prismjs/components/prism-tsx";
+import "prismjs/components/prism-kotlin";
+import "prismjs/components/prism-typescript";
+import "prismjs/components/prism-vim";
+import "prismjs/components/prism-yaml";
+import "prismjs/themes/prism.min.css";
 
-type Props = React.ComponentProps<"div"> & {
-  content: string;
-};
+import parser from "node-html-parser";
 
 marked.use(
   mangle(),
@@ -25,18 +32,23 @@ marked.use(
   })
 );
 
+type Props = React.ComponentProps<"div"> & {
+  content: string;
+};
+
 const MarkdownRenderer: React.FC<Props> = ({
   content,
   className,
+  style,
   ...Props
 }) => {
-
   const html = marked(content);
   const parsedContent = parser(html);
 
   return (
     <div
       className={className}
+      style={style}
       dangerouslySetInnerHTML={{ __html: parsedContent.innerHTML }}
     />
   );
