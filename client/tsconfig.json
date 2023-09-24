@@ -22,7 +22,8 @@
       "@/*": ["./src/*"],
       "@pub/*": ["./public/*"],
       "@comp/*": ["./src/app/components/*"],
-      "@container/*": ["./src/app/container/*"]
+      "@container/*": ["./src/app/container/*"],
+      "@util/*": ["./src/app/utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
