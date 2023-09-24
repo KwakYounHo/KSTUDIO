@@ -22,7 +22,7 @@
       "@/*": ["./src/*"],
       "@pub/*": ["./public/*"],
       "@comps/*": ["./src/components/*"],
-      "@containers/*": ["./src/container/*"],
+      "@containers/*": ["./src/containers/*"],
       "@utils/*": ["./src/utils/*"]
     }
   },
