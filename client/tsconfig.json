@@ -21,9 +21,9 @@
     "paths": {
       "@/*": ["./src/*"],
       "@pub/*": ["./public/*"],
-      "@comp/*": ["./src/app/components/*"],
-      "@container/*": ["./src/app/container/*"],
-      "@util/*": ["./src/app/utils/*"]
+      "@comps/*": ["./src/components/*"],
+      "@containers/*": ["./src/container/*"],
+      "@utils/*": ["./src/utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
