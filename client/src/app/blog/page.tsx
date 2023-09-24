@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import { Metadata } from 'next';
 import { constants } from '@/app/common/domain/models/constants'
-import MarkdownRenderer from '@/utils/components/MarkdownRenderer';
+import MarkdownRenderer from '@utils/MarkdownRenderer';
 
 export const metadata: Metadata = {
   title: constants.createTitle('Blog')
