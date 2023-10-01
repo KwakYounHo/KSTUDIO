@@ -3,15 +3,14 @@ import type { FC } from "react";
 import { constants } from "@/app/common/domain/models/constants";
 import { options } from "@/app/quote/Adapter/requestHeader";
 import DatabaseResult from "@/components/Quote/DatabaseResult";
-import { ENV } from "@/app/common/env";
 
-const metadata: Metadata = {
+export const metadata: Metadata = {
   title: constants.createTitle("Quote"),
 };
 
 const Quote: FC = async () => {
   const request = await fetch(
-    `https://api.notion.com/v1/databases/${ENV.development.notion_database}/query`,
+    `https://api.notion.com/v1/databases/${process.env.NOTION_DATABASE_ADDRESS}/query`,
     options
   );
   const jsonData = await request.json();
