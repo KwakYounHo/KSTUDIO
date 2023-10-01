@@ -1,10 +1,14 @@
-export const ENV = {
-  development: {
-    notion_api: process.env.NOTION_API_SECRET,
-    notion_database: process.env.NOTION_DATABASE_ADDRESS,
-  },
-  public: {
-    supabaseURL: process.env.NEXT_PUBLIC_SUPABASE_URL,
-    supabaseAPIKey: process.env.NEXT_PUBLIC_SUPABASE_API_KEY
-  }
+import { cleanEnv, str } from "envalid";
+
+export const ENV = cleanEnv({
+    NOTION_API_SECRET: process.env.NOTION_API_SECRET,
+    NOTION_DATABASE_ADDRESS: process.env.NOTION_DATABASE_ADDRESS,
+    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    NEXT_PUBLIC_SUPABASE_API_KEY: process.env.NEXT_PUBLIC_SUPABASE_API_KEY,
+  },{
+    NOTION_API_SECRET: str(),
+    NOTION_DATABASE_ADDRESS: str(),
+    NEXT_PUBLIC_SUPABASE_URL: str(),
+    NEXT_PUBLIC_SUPABASE_API_KEY: str(),
 }
+);
