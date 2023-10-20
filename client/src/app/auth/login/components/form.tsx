@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { supabase } from "@/utils/supabase";
+import { clientSupabase } from "@/utils/supabase";
 
 type myInput = {
   email: string;
