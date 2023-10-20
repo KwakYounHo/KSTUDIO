@@ -1,14 +1,14 @@
 import * as React from "react";
 import { Metadata } from "next";
 import { constants } from "@/app/common/domain/models/constants";
-import { supabase } from "@/utils/supabase";
+import { clientSupabase } from "@/utils/supabase";
 
 // export const metadata: Metadata = {
 //   title: constants.createTitle("Blog"),
 // };
 
 const Blog = async (): Promise<React.JSX.Element> => {
-  const { data: posts, error } = await supabase.from("posts").select("*");
+  const { data: posts, error } = await clientSupabase.from("posts").select("*");
 
   if (error) {
     console.error(error);
