@@ -4,7 +4,8 @@ import type { NextFont } from "next/dist/compiled/@next/font";
 import { about } from "@/models/about/about";
 import Link from "next/link";
 import { Metadata } from "next";
-import { constants } from '@/app/common/domain/models/constants'
+import { constants } from "@/app/common/domain/models/constants";
+import { commonClassName } from "@/app/common/commonClass";
 
 const badScript: NextFont = Bad_Script({
   subsets: ["latin"],
@@ -12,8 +13,8 @@ const badScript: NextFont = Bad_Script({
 });
 
 export const metadata: Metadata = {
-  title: constants.createTitle('About')
-}
+  title: constants.createTitle("About"),
+};
 
 const About: FC = () => {
   return (
@@ -22,8 +23,10 @@ const About: FC = () => {
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
       />
-      <main className={"flex flex-col items-center"}>
-        <div className={"w-52 h-52 my-8"}>
+      <main
+        className={`${commonClassName.topBlank} flex flex-col items-center`}
+      >
+        <div className={"w-52 h-52 mb-8"}>
           <img
             src={about.profile.profileIMG}
             title="avatar"
@@ -45,7 +48,9 @@ const About: FC = () => {
                 </span>
                 {element.href ? (
                   <span className={"text-xs text-blue-400"}>
-                    <Link href={element.href} target="_blank">{element.text}</Link>
+                    <Link href={element.href} target="_blank">
+                      {element.text}
+                    </Link>
                   </span>
                 ) : (
                   <span className={"text-xs"}>{element.text}</span>
