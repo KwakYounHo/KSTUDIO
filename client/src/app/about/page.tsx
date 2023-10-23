@@ -3,6 +3,7 @@ import { Bad_Script } from "next/font/google";
 import type { NextFont } from "next/dist/compiled/@next/font";
 import { about } from "@/models/about/about";
 import Link from "next/link";
+import Image from "next/image";
 import { Metadata } from "next";
 import { constants } from "@/app/common/domain/models/constants";
 import { commonClassName } from "@/app/common/commonClass";
@@ -21,7 +22,7 @@ const About: FC = () => {
     <>
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=optional"
       />
       <main
         className={`${commonClassName.topBlank} flex flex-col items-center`}

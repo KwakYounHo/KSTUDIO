@@ -15,12 +15,10 @@ const Blog = async (): Promise<React.JSX.Element> => {
     console.error(error);
   }
   return (
-    <main className={`${commonClassName.topBlank} container`}>
+    <main
+      className={`${commonClassName.topBlank} container flex justify-center items-center`}
+    >
       <h1>공사중</h1>
-      <div>
-        <p>아래는 결과</p>
-        <pre>{JSON.stringify(posts, null, 2)}</pre>
-      </div>
     </main>
   );
 };
