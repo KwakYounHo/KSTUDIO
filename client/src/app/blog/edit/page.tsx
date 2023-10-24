@@ -3,7 +3,7 @@
 import * as React from "react";
 import EditBoard from "@/containers/EditBoard";
 
-export const EditArticle: React.FC = async () => {
+const EditArticle: React.FC = () => {
   return (
     <main className={"my-auto"}>
       <EditBoard />
