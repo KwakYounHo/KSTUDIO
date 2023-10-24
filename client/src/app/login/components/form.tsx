@@ -7,14 +7,15 @@ import { clientSupabase } from "@/utils/supabase";
 type myInput = {
   email: string;
   password: string;
+  PWCheck: string;
 };
 
 const myOnsubmit: SubmitHandler<myInput> = async (data) => {
   console.log(data);
 };
 
-const MyForm: React.FC = async () => {
-  const { register, handleSubmit } = useForm<myInput>();
+const LoginForm: React.FC = () => {
+  const { register, handleSubmit, watch } = useForm<myInput>();
   return (
     <form onSubmit={handleSubmit(myOnsubmit)}>
       <input
@@ -27,8 +28,8 @@ const MyForm: React.FC = async () => {
         type="password"
         className={"border-2 border-black"}
       />
-      <input {...register} type="submit" />
+      <input type="submit" value="로그인" />
     </form>
   );
 };
-export default MyForm;
+export default LoginForm;
