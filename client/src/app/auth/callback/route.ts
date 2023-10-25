@@ -13,10 +13,7 @@ export const GET = async (req: NextRequest) => {
   console.log("코드 : " + requestUrl.searchParams.get("code"));
 
   if (code) {
-    const cookieStore = cookies();
-    const supabase = createRouteHandlerClient<Database>({
-      cookies: () => cookieStore,
-    });
+    const supabase = createRouteHandlerClient<Database>({ cookies });
     await supabase.auth.exchangeCodeForSession(code);
   }
 

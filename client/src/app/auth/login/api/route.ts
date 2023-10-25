@@ -10,10 +10,7 @@ export const POST = async (req: NextRequest) => {
 
   const requestParams = new URL(req.url).searchParams;
 
-  const cookieStore = cookies();
-  const supabase = createRouteHandlerClient<Database>({
-    cookies: () => cookieStore,
-  });
+  const supabase = createRouteHandlerClient<Database>({ cookies });
 
   const { error } = await supabase.auth.signInWithPassword({ email, password });
 
