@@ -6,6 +6,8 @@ import * as React from "react";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import Loading from "@/app/loading";
+import ClientDependencyContainer from "@/app/auth/loginConfirm/containers/ClientDependencyContainer";
+import LoginContainer from "@/app/auth/loginConfirm/containers/loginContainer";
 
 const inter: NextFont = Inter({ subsets: ["latin"] });
 
@@ -27,7 +29,10 @@ export default function RootLayout({
       >
         <React.Suspense fallback={<Loading />}>
           <Header />
-          {children}
+          <ClientDependencyContainer>
+            <LoginContainer />
+            {children}
+          </ClientDependencyContainer>
           <Footer />
         </React.Suspense>
       </body>
