@@ -1,8 +1,12 @@
 import * as React from "react";
 import type { Metadata } from "next";
 import { constants } from "@/app/common/domain/models/constants";
-import { clientSupabase } from "@/utils/supabase";
+import { quoteSupabase } from "@/app/quote/adapter/supabase";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { commonClassName } from "@/app/common/commonClass";
+import { cookies } from "next/headers";
+
+import type { Database } from "@/lib/database.types";
 
 import { diphylleia } from "@/utils/fontManager";
 
@@ -11,10 +15,10 @@ export const metadata: Metadata = {
 };
 
 const Quote: React.FC = async () => {
-  const { data: quote, error } = await clientSupabase
-    .from("quote")
-    .select("*")
-    .order("id", { ascending: false });
+  const supabase = quoteSupabase(
+    createServerComponentClient<Database>({ cookies })
+  );
+  const { quote, error } = await supabase.getQuoteAll();
   return (
     <main
       className={`${commonClassName.topBlank} container px-7 flex justify-center items-center flex-col`}
