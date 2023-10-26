@@ -9,9 +9,6 @@ export const GET = async (req: NextRequest) => {
   const requestUrl = new URL(req.url);
   const code = requestUrl.searchParams.get("code");
 
-  console.log("리퀘스트 유알엘 : " + requestUrl);
-  console.log("코드 : " + requestUrl.searchParams.get("code"));
-
   if (code) {
     const supabase = createRouteHandlerClient<Database>({ cookies });
     await supabase.auth.exchangeCodeForSession(code);

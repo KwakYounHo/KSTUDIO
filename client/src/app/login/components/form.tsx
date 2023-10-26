@@ -3,6 +3,7 @@
 import * as React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import { useLoginContext } from "@/app/auth/loginConfirm/provider/useLoginContext";
 
 type myInput = {
   email: string;
@@ -11,19 +12,25 @@ type myInput = {
 
 const LoginForm: React.FC = () => {
   const { register, handleSubmit } = useForm<myInput>();
-  const Router = useRouter();
+  const { setState } = useLoginContext();
+  const router = useRouter();
 
   const myOnsubmit: SubmitHandler<myInput> = async (data) => {
-    const request = await fetch("/auth/login/api", {
+    const request = await fetch("/auth/login", {
       method: "post",
       body: JSON.stringify(data),
     });
 
-    const resultStatus = await request.status;
+    const result = await request.json();
 
-    if (resultStatus < 400) {
+    if (!result.error) {
       alert("로그인 성공");
-      Router.push("/");
+      setState(true);
+      router.refresh();
+    } else if (result.error === "Invalid login credentials") {
+      alert("아이디 혹은 비밀번호가 잘못 입력되었습니다.");
+    } else {
+      alert("지정되지 않은 에러입니다 관리자에게 문의 부탁드립니다.");
     }
   };
 
