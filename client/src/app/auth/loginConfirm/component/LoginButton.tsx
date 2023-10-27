@@ -34,11 +34,12 @@ const LoginButton: React.FC<Props> = ({
             router.push(redirectUri);
           });
       }}
+      className={"absolute top-2 right-2"}
     >
       <button>로그아웃</button>
     </a>
   ) : (
-    <Link href={loginPath}>
+    <Link href={loginPath} className={"absolute top-2 right-2 opacity-0"}>
       <button>로그인</button>
     </Link>
   );
