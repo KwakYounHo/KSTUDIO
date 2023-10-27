@@ -21,9 +21,6 @@ const LoginContainer: React.FC = () => {
       .then((result) => setState(result.isLoggedIn));
   }, [setState]);
 
-  React.useEffect(() => {
-    console.log("로그인 상태 변경 : " + state);
-  }, [state]);
   return (
     <LoginButton
       isLoggedIn={state}

@@ -21,7 +21,6 @@ export const GET = async (req: NextRequest) => {
       return NextResponse.json({ error: "로그아웃 실패" }, { status: 400 });
     } else {
       const redirectUri = String(requestParams.get("redirectUri"));
-      console.log("전달한 URI : " + redirectUri);
       revalidatePath(redirectUri);
 
       return NextResponse.json({ redirectUri }, { status: 301 });
