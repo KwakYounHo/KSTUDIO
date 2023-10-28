@@ -15,8 +15,9 @@ export const metadata: Metadata = {
 };
 
 const Quote: React.FC = async () => {
+  const cookieStore = cookies();
   const supabase = quoteSupabase(
-    createServerComponentClient<Database>({ cookies })
+    createServerComponentClient<Database>({ cookies: () => cookieStore })
   );
   const { quote, error } = await supabase.getQuoteAll();
   return (

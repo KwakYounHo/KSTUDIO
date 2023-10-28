@@ -9,7 +9,10 @@ import type { Database } from "@/lib/database.types";
 
 export const GET = async (req: NextRequest) => {
   const requestParams = new URL(req.url).searchParams;
-  const supabase = createRouteHandlerClient<Database>({ cookies });
+  const cookieStore = cookies();
+  const supabase = createRouteHandlerClient<Database>({
+    cookies: () => cookieStore,
+  });
 
   const session = await supabase.auth.getSession();
 

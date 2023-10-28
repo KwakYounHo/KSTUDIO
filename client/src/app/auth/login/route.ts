@@ -10,7 +10,10 @@ import type { Database } from "@/lib/database.types";
 export const POST = async (req: NextRequest) => {
   const requestParams = new URL(req.url).searchParams;
 
-  const supabase = createRouteHandlerClient<Database>({ cookies });
+  const cookieStore = cookies();
+  const supabase = createRouteHandlerClient<Database>({
+    cookies: () => cookieStore,
+  });
   const { email, password } = await req.json();
   const { error } = await supabase.auth.signInWithPassword({ email, password });
 
