@@ -25,11 +25,17 @@ export const POST = async (req: NextRequest) => {
     if (error.message === "Invalid login credentials") {
       return NextResponse.json(
         { error: "Invalid login credentials" },
-        { status: 200 }
+        { status: 200, headers: { "Cache-Control": "no-store" } }
       );
     }
     console.error(`로그인 중 지정되지 않은 에러 : ${error}`);
-    return NextResponse.json({ error: error }, { status: 422 });
+    return NextResponse.json(
+      { error: error },
+      { status: 422, headers: { "Cache-Control": "no-store" } }
+    );
   }
-  return NextResponse.json("login Success", { status: 201 });
+  return NextResponse.json("login Success", {
+    status: 201,
+    headers: { "Cache-Control": "no-store" },
+  });
 };

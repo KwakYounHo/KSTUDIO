@@ -14,19 +14,30 @@ export const GET = async (req: NextRequest) => {
     cookies: () => cookieStore,
   });
 
-  const session = await supabase.auth.getSession();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-  if (session.data.session) {
+  if (session) {
     const { error } = await supabase.auth.signOut();
 
     if (error) {
       console.error(error);
-      return NextResponse.json({ error: "로그아웃 실패" }, { status: 400 });
+      return NextResponse.json(
+        { error: "로그아웃 실패" },
+        { status: 400, headers: { "Cache-Control": "no-store" } }
+      );
     } else {
       const redirectUri = String(requestParams.get("redirectUri"));
       revalidatePath(redirectUri);
 
-      return NextResponse.json({ redirectUri }, { status: 301 });
+      return NextResponse.json(
+        { redirectUri: redirectUri },
+        {
+          status: 301,
+          headers: { "Cache-Control": "no-store" },
+        }
+      );
     }
   }
 };

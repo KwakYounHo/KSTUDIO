@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import Link from "next/link";
 
 type Props = {
@@ -25,13 +25,12 @@ const LoginButton: React.FC<Props> = ({
       href={logoutPath}
       onClick={(e) => {
         e.preventDefault();
-        void fetch(logoutPath)
+        fetch(logoutPath)
           .then((response) => response.json())
           .then((result) => {
-            const redirectUri = result.redirectUri || "/";
+            if (result.error) alert("로그아웃 실패");
             setIsLogin(false);
-            router.refresh;
-            router.push(redirectUri);
+            router.push(result.redirectUri);
           });
       }}
       className={"absolute top-2 right-2"}

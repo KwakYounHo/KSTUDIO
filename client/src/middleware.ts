@@ -7,6 +7,20 @@ import type { Database } from "@/lib/database.types";
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
   const supabase = createMiddlewareClient<Database>({ req, res });
-  await supabase.auth.getSession();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (user && req.nextUrl.pathname === "/login") {
+    const redirectUri = req.nextUrl.searchParams.get("redirectUri");
+    return NextResponse.redirect(new URL(redirectUri || "/", req.url), {
+      status: 302,
+    });
+  }
+
   return res;
 }
+
+export const config = {
+  matcher: ["/login"],
+};

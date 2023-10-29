@@ -4,6 +4,7 @@ import * as React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useLoginContext } from "@/app/auth/loginConfirm/provider/useLoginContext";
+import { useSearchParams } from "next/navigation";
 
 type myInput = {
   email: string;
@@ -14,6 +15,7 @@ const LoginForm: React.FC = () => {
   const { register, handleSubmit } = useForm<myInput>();
   const { setState } = useLoginContext();
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const myOnsubmit: SubmitHandler<myInput> = async (data) => {
     const request = await fetch("/auth/login", {
@@ -26,7 +28,8 @@ const LoginForm: React.FC = () => {
     if (!result.error) {
       alert("로그인 성공");
       setState(true);
-      router.refresh();
+      const redirectUri = searchParams.get("redirectUri") || "/";
+      router.push(redirectUri);
     } else if (result.error === "Invalid login credentials") {
       alert("아이디 혹은 비밀번호가 잘못 입력되었습니다.");
     } else {
