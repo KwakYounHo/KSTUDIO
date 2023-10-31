@@ -1,5 +1,6 @@
 import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
 import { NextResponse } from "next/server";
+import { ENV } from "@/app/common/env";
 
 import type { NextRequest } from "next/server";
 import type { Database } from "@/lib/database.types";
@@ -18,9 +19,19 @@ export async function middleware(req: NextRequest) {
     });
   }
 
+  if (req.nextUrl.pathname === "/blog/edit") {
+    if (!user) {
+      return NextResponse.redirect(new URL("/404", req.url), { status: 302 });
+    } else {
+      if (user.id !== ENV.MANAGER_ID) {
+        return NextResponse.redirect(new URL("/404", req.url), { status: 302 });
+      }
+    }
+  }
+
   return res;
 }
 
 export const config = {
-  matcher: ["/login"],
+  matcher: ["/login", "/blog/edit"],
 };
