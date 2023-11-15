@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import EditBoard from "@/containers/EditBoard";
+import EditBoard from "@/app/blog/edit/containers/EditBoard";
 
 const EditArticle: React.FC = () => {
   return (
