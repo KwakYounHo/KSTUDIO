@@ -9,5 +9,13 @@ export const blogSupabase = (client: SupabaseClient<Database>) => {
       .order("seq", { ascending: false });
     return posts;
   };
-  return { findList };
+  const selectSlug = async (slug: string) => {
+    const { data: post, error: selectError } = await client
+      .from("posts")
+      .select("*")
+      .eq("slug", slug);
+
+    return post;
+  };
+  return { findList, selectSlug };
 };
