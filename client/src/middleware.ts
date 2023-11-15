@@ -19,7 +19,7 @@ export async function middleware(req: NextRequest) {
     });
   }
 
-  if (req.nextUrl.pathname === "/blog/edit") {
+  if (req.nextUrl.pathname.includes("/blog/edit/")) {
     if (!user) {
       return NextResponse.redirect(new URL("/404", req.url), { status: 302 });
     } else {
@@ -33,5 +33,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/login", "/blog/edit"],
+  matcher: ["/login", "/blog/edit/:path*"],
 };

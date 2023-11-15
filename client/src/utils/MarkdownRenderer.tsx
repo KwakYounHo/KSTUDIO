@@ -39,7 +39,6 @@ type Props = React.ComponentProps<"div"> & {
 const MarkdownRenderer: React.FC<Props> = ({
   content,
   className,
-  style,
   ...Props
 }) => {
   const html = marked(content);
@@ -48,7 +47,6 @@ const MarkdownRenderer: React.FC<Props> = ({
   return (
     <div
       className={className}
-      style={style}
       dangerouslySetInnerHTML={{ __html: parsedContent.innerHTML }}
     />
   );

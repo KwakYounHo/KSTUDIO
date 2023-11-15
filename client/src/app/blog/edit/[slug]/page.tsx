@@ -1,10 +1,9 @@
 import * as React from "react";
 import { constants } from "@/app/common/domain/models/constants";
+import { blogSupabase } from "@/app/blog/adapter/supabase";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import { blogSupabase } from "@/app/blog/adapter/supabase";
-import MarkdownRenderer from "@/utils/MarkdownRenderer";
-
+import EditBoard from "@/app/blog/edit/containers/EditBoard";
 import type { Metadata } from "next";
 import type { Database } from "@/lib/database.types";
 
@@ -17,19 +16,23 @@ type Props = {
 export const generateMetadata = async ({
   params,
 }: Props): Promise<Metadata> => {
-  const titleText = decodeURIComponent(params.slug);
   return {
-    title: constants.createTitle(titleText),
+    title: constants.createTitle(`수정 : ${decodeURIComponent(params.slug)}`),
   };
 };
 
-const ViewPage = async ({ params }: Props) => {
+const EditBlog = async ({ params }: Props) => {
   const cookieStore = cookies();
+
   const supabase = blogSupabase(
     createServerComponentClient<Database>({ cookies: () => cookieStore })
   );
   const post = await supabase.selectSlug(params.slug);
-
-  return <main>{post && <MarkdownRenderer content={post[0].article} />}</main>;
+  return (
+    <main>
+      <p>에딧페이지</p>
+      {post && <EditBoard article={post[0].article} />}
+    </main>
+  );
 };
-export default ViewPage;
+export default EditBlog;
