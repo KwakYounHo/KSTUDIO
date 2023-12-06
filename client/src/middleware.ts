@@ -12,6 +12,7 @@ export async function middleware(req: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
+  // check url
   if (user && req.nextUrl.pathname === "/login") {
     const redirectUri = req.nextUrl.searchParams.get("redirectUri");
     return NextResponse.redirect(new URL(redirectUri || "/", req.url), {
@@ -29,9 +30,19 @@ export async function middleware(req: NextRequest) {
     }
   }
 
+  if (req.nextUrl.pathname.includes("/blog/create")) {
+    if (!user) {
+      return NextResponse.redirect(new URL("/404", req.url), { status: 302 });
+    } else {
+      if (user.id !== ENV.MANAGER_ID) {
+        return NextResponse.redirect(new URL("/404", req.url), { status: 302 });
+      }
+    }
+  }
+
   return res;
 }
 
 export const config = {
-  matcher: ["/login", "/blog/edit/:path*"],
+  matcher: ["/login", "/blog/edit/:path*", "/blog/create"],
 };
