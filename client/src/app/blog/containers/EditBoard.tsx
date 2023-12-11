@@ -18,9 +18,10 @@ const EditBoard: React.FC<ComponentProps> = ({ article = "" }) => {
   }, [article]);
 
   return (
-    <div className={"flex gap-4"}>
+    <div className={"flex gap-4 flex-col"}>
       <div className={"border-2"}>
         <AceNoSSR
+          className={"w-[80rem]"}
           placeholder="마크다운 언어를 사용하면 오른쪽에 렌더링 됩니다 :)"
           onChange={(e: string) => {
             setContent(e);
@@ -30,7 +31,10 @@ const EditBoard: React.FC<ComponentProps> = ({ article = "" }) => {
         />
       </div>
       <div className={"border-2"}>
-        <MarkdownRenderer className={"p-2 w-[500px]"} content={content} />
+        <MarkdownRenderer
+          className={"p-2 w-[80rem] whitespace-normal overflow-wrap"}
+          content={content}
+        />
       </div>
     </div>
   );

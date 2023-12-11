@@ -3,7 +3,7 @@ import { constants } from "@/app/common/domain/models/constants";
 import { blogSupabase } from "@/app/blog/adapter/supabase";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import EditBoard from "@/app/blog/edit/containers/EditBoard";
+import EditBoard from "@/app/blog/containers/EditBoard";
 import type { Metadata } from "next";
 import type { Database } from "@/lib/database.types";
 
@@ -30,7 +30,7 @@ const EditBlog = async ({ params }: Props) => {
   const post = await supabase.selectSlug(params.slug);
   return (
     <main>
-      <p>에딧페이지</p>
+      <h1>에딧페이지</h1>
       {post && <EditBoard article={post[0].article} />}
     </main>
   );

@@ -21,6 +21,7 @@ const AceWrapper = (
       name="MARKDOWN_EDITOR"
       tabSize={2}
       value={defaultValue}
+      width={props.width || "80rem"}
       {...props}
     />
   );
