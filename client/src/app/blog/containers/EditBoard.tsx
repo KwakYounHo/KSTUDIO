@@ -3,23 +3,23 @@
 import * as React from "react";
 import MarkdownRenderer from "@/utils/MarkdownRenderer";
 import dynamic from "next/dynamic";
-import { Controller, useForm } from "react-hook-form";
+import { Controller } from "react-hook-form";
 
-import type { Control } from "react-hook-form";
+import type { Control, FieldValues, Path } from "react-hook-form";
 
 const AceNoSSR = dynamic(() => import("@utils/AceWrapper"));
 
-type ComponentProps = {
-  control: Control;
+type ComponentProps<T extends FieldValues> = {
+  control: Control<T>;
   preArticle: string;
-  name: string;
+  name: Path<T>;
 };
 
-const EditBoard: React.FC<ComponentProps> = ({
+const EditBoard = <T extends FieldValues>({
   control,
   name,
   preArticle = "",
-}) => {
+}: ComponentProps<T>): JSX.Element => {
   const [content, setContent] = React.useState<string>("");
 
   React.useEffect(() => {
