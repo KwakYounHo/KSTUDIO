@@ -1,11 +1,16 @@
-import { format } from "date-fns-tz";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 
-export const timeFormater = (date: string) => {
-  const created_at = date;
-  const koreanTimezone = "Asia/Seoul";
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
-  const formattedDate = format(new Date(created_at), "yyyy년 MM월 dd일", {
-    timeZone: koreanTimezone,
-  });
-  return formattedDate;
+export const toISO8601 = (date: string, format: string): string => {
+  const time = dayjs(date).tz("Asia/Seoul").format(format);
+  return time;
+};
+
+export const toUTC = (date: Date): string => {
+  const time = dayjs(date).utc().format("YYYY-MM-DDTHH-mm-ss.SSS+00:00");
+  return time;
 };

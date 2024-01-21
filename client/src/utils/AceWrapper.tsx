@@ -1,18 +1,15 @@
-import * as React from "react";
 import AceEditor from "react-ace";
 
 import "ace-builds/src-min-noconflict/mode-markdown";
 import "ace-builds/src-min-noconflict/theme-tomorrow";
 import "ace-builds/src-min-noconflict/ext-language_tools";
 
-type ComponentProps = {
-  defaultValue: string;
+type Props = React.ComponentProps<typeof AceEditor> & {
+  content: string;
+  setContent: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const AceWrapper = (
-  props: React.ComponentProps<typeof AceEditor>,
-  { defaultValue }: ComponentProps
-): JSX.Element => {
+const AceWrapper = (props: Props): JSX.Element => {
   return (
     <AceEditor
       wrapEnabled
@@ -20,8 +17,10 @@ const AceWrapper = (
       theme="tomorrow"
       name="MARKDOWN_EDITOR"
       tabSize={2}
-      value={defaultValue}
-      width={props.width || "80rem"}
+      defaultValue={props.content}
+      onChange={(value) => {
+        props.setContent(value);
+      }}
       {...props}
     />
   );

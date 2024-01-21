@@ -1,6 +1,6 @@
 import * as React from "react";
 import { constants } from "@/app/common/domain/models/constants";
-import { blogSupabase } from "@/app/blog/adapter/supabase";
+import databaseAdapter from "@/app/blog/adapter/supabase";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import EditContainer from "@/app/blog/edit/containers/EditContainer";
@@ -10,6 +10,9 @@ import type { Database } from "@/lib/database.types";
 type Props = {
   params: {
     slug: string;
+  };
+  searchParams: {
+    seq: string;
   };
 };
 
@@ -21,18 +24,22 @@ export const generateMetadata = async ({
   };
 };
 
-const EditBlog = async ({ params }: Props) => {
+const EditBlog = async ({ params, searchParams }: Props) => {
   const cookieStore = cookies();
 
-  const supabase = blogSupabase(
+  const supabase = databaseAdapter(
     createServerComponentClient<Database>({ cookies: () => cookieStore })
   );
-  const post = await supabase.selectSlug(params.slug);
+  const { data, error } = await supabase.selectSlugSeq(
+    params.slug,
+    searchParams.seq
+  );
   return (
-    <main>
-      <h1>에딧페이지</h1>
-      {post && <EditContainer article={post[0].article} />}
-    </main>
+    <>
+      <h1 className={`text-2xl font-black`}>에딧페이지</h1>
+      {error && <p>이 문구가 보인다면 관리자에게 문의 부탁드립니다.</p>}
+      {data && <EditContainer data={data} />}
+    </>
   );
 };
 export default EditBlog;

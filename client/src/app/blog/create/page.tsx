@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 
 const ArticleCreate: React.FC = () => {
   return (
-    <main>
-      <p>글 작성 페이지</p>
+    <>
+      <p className={"text-2xl font-black"}>글 작성 페이지</p>
       <CreateContainer />
-    </main>
+    </>
   );
 };
 export default ArticleCreate;

@@ -1,4 +1,3 @@
-import * as React from "react";
 import { marked } from "marked";
 import { markedHighlight } from "marked-highlight";
 import Prism from "prismjs";
@@ -36,11 +35,11 @@ type Props = React.ComponentProps<"div"> & {
   content: string;
 };
 
-const MarkdownRenderer: React.FC<Props> = ({
+const MarkdownRenderer = ({
   content,
   className,
   ...Props
-}) => {
+}: Props): JSX.Element => {
   const html = marked(content);
   const parsedContent = parser(html);
 
