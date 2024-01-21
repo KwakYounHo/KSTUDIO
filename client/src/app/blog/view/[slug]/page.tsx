@@ -3,7 +3,7 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import databaseAdapter from "@/app/blog/adapter/supabase";
 import MarkdownRenderer from "@/utils/MarkdownRenderer";
-import DeleteButton from "@/app/blog/view/components/DeleteButton";
+import ManagingButton from "@/app/blog/view/components/ManagingButton";
 
 import type { Metadata } from "next";
 import type { Database } from "@/lib/database.types";
@@ -44,7 +44,7 @@ const ViewPage = async ({ params, searchParams }: Props) => {
         <>
           <p className={"text-2xl font-black mb-7"}>{data[0].title}</p>
           <MarkdownRenderer content={data[0].article} className={"w-full"} />
-          {isLogin && <DeleteButton seq={data[0].seq} />}
+          {isLogin && <ManagingButton seq={data[0].seq} />}
         </>
       )}
     </>

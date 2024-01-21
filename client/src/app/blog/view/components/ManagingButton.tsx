@@ -6,7 +6,7 @@ type Props = {
   seq: number;
 };
 
-const DeleteButton = ({ seq }: Props): JSX.Element => {
+const ManagingButton = ({ seq }: Props): JSX.Element => {
   const router = useRouter();
   const deleteRequest = async () => {
     const request = await fetch(`/blog/delete/api?seq=${seq}`, {
@@ -29,4 +29,4 @@ const DeleteButton = ({ seq }: Props): JSX.Element => {
     </>
   );
 };
-export default DeleteButton;
+export default ManagingButton;
