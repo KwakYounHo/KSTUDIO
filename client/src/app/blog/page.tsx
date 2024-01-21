@@ -25,11 +25,13 @@ const Blog = async (): Promise<React.JSX.Element> => {
 
   return (
     <>
-      <Link href={"/blog/create"}>
-        <button type={"button"} className={"border-2"}>
-          생성
-        </button>
-      </Link>
+      {isLogin && (
+        <Link href={"/blog/create"}>
+          <button type={"button"} className={"border-2"}>
+            생성
+          </button>
+        </Link>
+      )}
       <ul className={`${commonClassName.topBlank} grid gap-10`}>
         {posts
           ? posts.map((element) => {
