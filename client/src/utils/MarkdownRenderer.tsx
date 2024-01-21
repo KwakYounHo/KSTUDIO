@@ -17,6 +17,8 @@ import "prismjs/themes/prism.min.css";
 
 import parser from "node-html-parser";
 
+import "@/app/blog/view/[slug]/viewRenderer.css";
+
 marked.use(
   mangle(),
   gfmHeadingId(),
@@ -38,13 +40,14 @@ type Props = React.ComponentProps<"div"> & {
 const MarkdownRenderer = ({
   content,
   className,
-  ...Props
+  ...props
 }: Props): JSX.Element => {
   const html = marked(content);
   const parsedContent = parser(html);
 
   return (
     <div
+      id={props.id}
       className={className}
       dangerouslySetInnerHTML={{ __html: parsedContent.innerHTML }}
     />

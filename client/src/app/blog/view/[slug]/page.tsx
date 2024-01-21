@@ -4,6 +4,8 @@ import { cookies } from "next/headers";
 import databaseAdapter from "@/app/blog/adapter/supabase";
 import MarkdownRenderer from "@/utils/MarkdownRenderer";
 import ManagingButton from "@/app/blog/view/components/ManagingButton";
+import { toISO8601 } from "@/app/blog/common/dateManagement";
+import { commonClassName } from "@/app/common/commonClass";
 
 import type { Metadata } from "next";
 import type { Database } from "@/lib/database.types";
@@ -43,8 +45,17 @@ const ViewPage = async ({ params, searchParams }: Props) => {
       {data && (
         <>
           <p className={"text-2xl font-black mb-7"}>{data[0].title}</p>
-          <MarkdownRenderer content={data[0].article} className={"w-full"} />
-          {isLogin && <ManagingButton seq={data[0].seq} />}
+          {data[0].updated_at && (
+            <p className={"text-sm"}>
+              수정일 : {toISO8601(data[0].updated_at, "YYYY년 MM월 DD일 HH:mm")}
+            </p>
+          )}
+          <MarkdownRenderer
+            content={data[0].article}
+            className={`${commonClassName.topBlank} w-full`}
+            id={"MarkdownRenderer"}
+          />
+          {isLogin && <ManagingButton seq={data[0].seq} slug={data[0].slug} />}
         </>
       )}
     </>

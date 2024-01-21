@@ -1,0 +1,3 @@
+#MarkdownRenderer h1 {
+  @apply text-2xl font-black
+}

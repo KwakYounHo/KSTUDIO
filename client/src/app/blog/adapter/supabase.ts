@@ -3,6 +3,9 @@ import type { Database } from "@/lib/database.types";
 import { ENV } from "@/app/common/env";
 
 type PostRows = Database["public"]["Tables"]["posts"]["Row"];
+type UpdateData = Pick<PostRows, "article" | "title" | "updated_at"> & {
+  seq: string;
+};
 
 export default (client: SupabaseClient<Database>) => {
   const isManager = async () => {
@@ -38,11 +41,27 @@ export default (client: SupabaseClient<Database>) => {
     return { data, error };
   };
 
-  const deletepost = async (seq: string): Promise<void | PostgrestError> => {
+  const deletePost = async (seq: string): Promise<void | PostgrestError> => {
     const { error } = await client.from("posts").delete().eq("seq", seq);
     if (error) return error;
     return;
   };
 
-  return { findList, selectSlugSeq, insertPost, isManager, deletepost };
+  const updatePost = async ({ seq, ...updateData }: UpdateData) => {
+    const { data, error } = await client
+      .from("posts")
+      .update({ ...updateData })
+      .eq("seq", seq)
+      .select();
+    return { data, error };
+  };
+
+  return {
+    findList,
+    selectSlugSeq,
+    insertPost,
+    isManager,
+    deletePost,
+    updatePost,
+  };
 };

@@ -16,7 +16,7 @@ export const DELETE = async (req: NextRequest) => {
 
   if (!target) return NextResponse.json("잘못 된 인식 번호", option(400));
   if (target) {
-    const error = await database.deletepost(target);
+    const error = await database.deletePost(target);
     if (error) return NextResponse.json(error, option(400));
 
     const redirectURL = new URL("/blog", req.url);

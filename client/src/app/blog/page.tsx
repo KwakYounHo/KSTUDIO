@@ -21,12 +21,16 @@ const Blog = async (): Promise<React.JSX.Element> => {
   );
 
   const posts = await supabase.findList();
+  const isLogin = await supabase.isManager();
 
   return (
-    <main
-      className={`${commonClassName.topBlank} container flex justify-center items-center`}
-    >
-      <ul className={"grid gap-10"}>
+    <>
+      <Link href={"/blog/create"}>
+        <button type={"button"} className={"border-2"}>
+          생성
+        </button>
+      </Link>
+      <ul className={`${commonClassName.topBlank} grid gap-10`}>
         {posts
           ? posts.map((element) => {
               return (
@@ -45,7 +49,7 @@ const Blog = async (): Promise<React.JSX.Element> => {
             })
           : null}
       </ul>
-    </main>
+    </>
   );
 };
 

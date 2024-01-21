@@ -11,6 +11,6 @@ export const toISO8601 = (date: string, format: string): string => {
 };
 
 export const toUTC = (date: Date): string => {
-  const time = dayjs(date).utc().format("YYYY-MM-DDTHH-mm-ss.SSS+00:00");
+  const time = dayjs(date).utc().format("YYYY-MM-DDTHH:mm:ss.SSS+00:00");
   return time;
 };
