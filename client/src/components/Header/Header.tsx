@@ -1,4 +1,3 @@
-import { FC, useContext } from "react";
 import { Inconsolata } from "next/font/google";
 import Link from "next/link";
 import { title } from "@/models/header/navigation";
@@ -10,12 +9,12 @@ const inconsolata: NextFont = Inconsolata({
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
-const Header: FC = () => {
+const Header = (): JSX.Element => {
   return (
     <header id="container" className={`${inconsolata.className} select-none`}>
       <Link href="/" className="flex justify-center">
         <button className="hover:text-blue-400">
-          <h1 className="uppercase tracking-[3px] mt-12 mb-3">younho kwak</h1>
+          <p className="uppercase tracking-[3px] mt-12 mb-3">younho kwak</p>
         </button>
       </Link>
       <nav className="text-sm font-light text-gray-700 flex gap-4 justify-center capitalize tracking-tight m-4">

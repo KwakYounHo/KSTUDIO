@@ -36,7 +36,7 @@ const EditBlog = async ({ params, searchParams }: Props) => {
   );
   return (
     <>
-      <h1 className={`text-2xl font-black`}>에딧페이지</h1>
+      <p className={`text-2xl font-black`}>에딧페이지</p>
       {error && <p>이 문구가 보인다면 관리자에게 문의 부탁드립니다.</p>}
       {data && <EditContainer data={data} />}
     </>

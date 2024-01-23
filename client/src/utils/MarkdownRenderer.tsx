@@ -17,7 +17,7 @@ import "prismjs/themes/prism.min.css";
 
 import parser from "node-html-parser";
 
-import "@/app/blog/view/[slug]/viewRenderer.css";
+import "@/app/blog/common/viewRenderer.css";
 
 marked.use(
   mangle(),
@@ -47,7 +47,7 @@ const MarkdownRenderer = ({
 
   return (
     <div
-      id={props.id}
+      id={"MarkdownRenderer"}
       className={className}
       dangerouslySetInnerHTML={{ __html: parsedContent.innerHTML }}
     />

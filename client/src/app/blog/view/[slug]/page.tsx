@@ -44,7 +44,7 @@ const ViewPage = async ({ params, searchParams }: Props) => {
     <>
       {data && (
         <>
-          <p className={"text-2xl font-black mb-7"}>{data[0].title}</p>
+          <h1 className={"text-2xl font-black mb-7"}>{data[0].title}</h1>
           {data[0].updated_at && (
             <p className={"text-sm"}>
               수정일 : {toISO8601(data[0].updated_at, "YYYY년 MM월 DD일 HH:mm")}
@@ -53,7 +53,6 @@ const ViewPage = async ({ params, searchParams }: Props) => {
           <MarkdownRenderer
             content={data[0].article}
             className={`${commonClassName.topBlank} w-full`}
-            id={"MarkdownRenderer"}
           />
           {isLogin && <ManagingButton seq={data[0].seq} slug={data[0].slug} />}
         </>

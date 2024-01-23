@@ -40,7 +40,7 @@ const Blog = async (): Promise<React.JSX.Element> => {
                   <Link href={`/blog/view/${element.slug}?seq=${element.seq}`}>
                     <div className={"flex items-end gap-5 justify-between"}>
                       <p className={"text-sm"}>{element.seq}.</p>
-                      <h1 className={"text-2xl"}>{element.title}</h1>
+                      <p className={"text-2xl"}>{element.title}</p>
                       <p className={"text-sm"}>
                         작성일: {toISO8601(element.created_at, "YYYY-MM-DD")}
                       </p>
