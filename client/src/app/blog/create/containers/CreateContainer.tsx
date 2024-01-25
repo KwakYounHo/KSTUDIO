@@ -10,8 +10,9 @@ type CreateForm = {
   article: string;
   slug: string;
 };
+type Props = React.ComponentProps<"form">;
 
-const CreateContainer: React.FC = () => {
+const CreateContainer = ({ className }: Props): JSX.Element => {
   const router = useRouter();
   const form = useForm<CreateForm>();
   const { register, setValue, handleSubmit } = form;
@@ -41,7 +42,7 @@ const CreateContainer: React.FC = () => {
   return (
     <form
       onSubmit={handleSubmit(submit)}
-      className={`w-full flex flex-col gap-5`}
+      className={`w-full flex flex-col gap-5 ${className}`}
     >
       <input type="text" {...register("title")} className={"w-full border-2"} />
       <EditArticle content={content} setContent={setContent} />
