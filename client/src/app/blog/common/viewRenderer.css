@@ -1,9 +1,6 @@
 #MarkdownRenderer h2 {
   @apply text-3xl font-black py-4 my-4 border-b-2
 }
-#MarkdownRenderer h2 a {
-  @apply text-black
-}
 #MarkdownRenderer h3 {
   @apply text-xl font-bold my-2 py-2
 }
