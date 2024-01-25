@@ -45,11 +45,21 @@ const ViewPage = async ({ params, searchParams }: Props) => {
       {data && (
         <>
           <h1 className={"text-4xl font-black mb-7"}>{data[0].title}</h1>
-          {data[0].updated_at && (
+          <div
+            className={`${commonClassName.topBlank} w-1/3 flex justify-between`}
+          >
             <p className={"text-sm"}>
-              수정일 : {toISO8601(data[0].updated_at, "YYYY년 MM월 DD일 HH:mm")}
+              작성일 : {toISO8601(data[0].created_at, "YYYY년 MM월 DD일 HH:mm")}
             </p>
-          )}
+            {data[0].updated_at ? (
+              <p className={"text-sm"}>
+                수정일 :{" "}
+                {toISO8601(data[0].updated_at, "YYYY년 MM월 DD일 HH:mm")}
+              </p>
+            ) : (
+              <p>수정일 : </p>
+            )}
+          </div>
           <MarkdownRenderer
             content={data[0].article}
             className={`${commonClassName.topBlank} w-full`}
