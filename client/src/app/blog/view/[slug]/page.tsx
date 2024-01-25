@@ -44,7 +44,7 @@ const ViewPage = async ({ params, searchParams }: Props) => {
     <>
       {data && (
         <>
-          <h1 className={"text-2xl font-black mb-7"}>{data[0].title}</h1>
+          <h1 className={"text-4xl font-black mb-7"}>{data[0].title}</h1>
           {data[0].updated_at && (
             <p className={"text-sm"}>
               수정일 : {toISO8601(data[0].updated_at, "YYYY년 MM월 DD일 HH:mm")}

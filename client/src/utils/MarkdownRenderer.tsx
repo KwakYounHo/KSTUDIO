@@ -1,8 +1,11 @@
+"use client";
+
 import { marked } from "marked";
 import { markedHighlight } from "marked-highlight";
 import Prism from "prismjs";
 import { mangle } from "marked-mangle";
 import { gfmHeadingId } from "marked-gfm-heading-id";
+import * as React from "react";
 
 import "prismjs/components/prism-bash";
 import "prismjs/components/prism-c";
@@ -44,6 +47,18 @@ const MarkdownRenderer = ({
 }: Props): JSX.Element => {
   const html = marked(content);
   const parsedContent = parser(html);
+
+  React.useEffect(() => {
+    const codeBlock = document.querySelectorAll("#MarkdownRenderer pre code");
+    codeBlock.forEach((element) => {
+      const match = element.className.match(/language-(\w+)/);
+      if (match) {
+        const design = document.createElement("div");
+        design.innerHTML = `<p class="code_language">${match[1]}</p>`;
+        element.parentNode?.insertBefore(design, element);
+      }
+    });
+  }, [content]);
 
   return (
     <div
