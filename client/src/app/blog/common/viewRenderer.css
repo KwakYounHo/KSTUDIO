@@ -25,3 +25,9 @@
 #MarkdownRenderer ol {
   @apply list-decimal pl-7
 }
+#MarkdownRenderer blockquote {
+  @apply border-l-8 pl-2 p-2 my-2 text-xl
+}
+#MarkdownRenderer blockquote blockquote {
+  @apply border-none text-sm pl-0 p-0 my-0
+}
