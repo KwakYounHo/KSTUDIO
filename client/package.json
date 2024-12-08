@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@notionhq/client": "^2.2.15",
     "@supabase/auth-helpers-nextjs": "^0.8.1",
     "@supabase/supabase-js": "^2.37.0",
     "@types/node": "20.5.9",
@@ -26,6 +27,7 @@
     "marked-mangle": "^1.1.4",
     "next": "13.4.19",
     "node-html-parser": "^6.1.10",
+    "notion-to-md": "^3.1.1",
     "postcss": "8.4.29",
     "prismjs": "^1.29.0",
     "react": "18.2.0",

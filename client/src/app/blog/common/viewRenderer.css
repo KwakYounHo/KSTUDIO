@@ -1,33 +1,41 @@
 #MarkdownRenderer h2 {
-  @apply text-3xl font-black py-4 my-4 border-b-2
+  @apply text-3xl font-black py-4 my-4 border-b-2;
 }
 #MarkdownRenderer h3 {
-  @apply text-xl font-bold my-2 py-2
+  @apply text-xl font-bold my-2 py-2;
 }
 #MarkdownRenderer code {
-  @apply border-2 rounded-md text-red-400
+  @apply border-2 rounded-md text-red-400;
 }
 #MarkdownRenderer pre code {
-  @apply border-none rounded-none text-black
+  @apply border-none rounded-none text-black;
 }
 #MarkdownRenderer pre {
-  @apply overflow-x-scroll p-4 border-2 bg-black/5 rounded-md
+  @apply overflow-x-scroll p-4 border-2 bg-black/5 rounded-md;
 }
 #MarkdownRenderer a {
-  @apply text-blue-400 hover:underline
+  @apply text-blue-400 hover:underline;
 }
 #MarkdownRenderer pre .code_language {
-  @apply text-xs text-black/50 capitalize mb-2
+  @apply text-xs text-black/50 capitalize mb-2;
 }
 #MarkdownRenderer ul {
-  @apply list-disc pl-7
+  @apply list-disc pl-7;
 }
 #MarkdownRenderer ol {
-  @apply list-decimal pl-7
+  @apply list-decimal pl-7;
 }
 #MarkdownRenderer blockquote {
-  @apply border-l-8 pl-2 p-2 my-2 text-xl
+  @apply border-l-8 pl-2 p-2 my-2 text-xl;
 }
 #MarkdownRenderer blockquote blockquote {
-  @apply border-none text-sm pl-0 p-0 my-0
+  @apply border-none text-sm pl-0 p-0 my-0;
+}
+
+#MarkdownRenderer hr {
+  @apply my-4;
+}
+
+#MarkdownRenderer p {
+  @apply my-1;
 }
